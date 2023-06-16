@@ -40,6 +40,13 @@ const Demo = () => {
       );
     }
   };
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <section className="w-4/5 mt-12 ">
       <form
@@ -64,20 +71,32 @@ const Demo = () => {
       </form>
       {/* Browser History */}
 
-      <div className="flex flex-col border-grey mt-2">
-        {allArticles.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-row items-center mt-1 p-4 h-14 bg-white w-full rounded-md"
-            // onClick={()=>{alert("clicked")}}
-            onClick={() => setArticle(item)}
+      <div className="relative">
+        <div className="flex flex-row-reverse border-grey mt-2">
+          <button
+            onClick={toggleDropdown}
+            className="text-white font-bold py-2 px-4 rounded-3xl w-1/3 sm:w-1/6 orangebg_gradient"
           >
-            <div className="copy_btn mr-3">
-              <img src={copy} alt="" className="h-5 w-5" />
-            </div>
-            <p className="text-indigo-600 truncate">{item.url}</p>
+            History
+          </button>
+        </div>
+        {isOpen && (
+          <div className="flex flex-col border-grey mt-2">
+            {allArticles.map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-row items-center mt-1 p-4 h-14 bg-white w-full rounded-md cursor-pointer"
+                // onClick={()=>{alert("clicked")}}
+                onClick={() => setArticle(item)}
+              >
+                <div className="copy_btn mr-3">
+                  <img src={copy} alt="" className="h-5 w-5" />
+                </div>
+                <p className="text-indigo-600 truncate">{item.url}</p>
+              </div>
+            ))}
           </div>
-        ))}
+        )}
       </div>
 
       {/* Article Summary */}

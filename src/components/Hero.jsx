@@ -9,7 +9,7 @@ const Hero = () => {
         </div>
         <button
           className="bg-black text-white rounded-full p-2 w-32"
-          onClick={() => window.open("https://github.com/Vsoni27")}
+          onClick={() => window.open("https://github.com/Vsoni27/OpenAI-Summarizer")}
         >
           GitHub
         </button>
