@@ -12,7 +12,6 @@ const Demo = () => {
   });
 
   const [allArticles, setAllArticles] = useState([]); // contains list of all articles that were searched
-  console.log("allArticles", allArticles);
 
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
 
@@ -20,7 +19,6 @@ const Demo = () => {
     const articleDatafromLocalStorage = JSON.parse(
       localStorage.getItem("ArticleHistory")
     );
-    console.log(articleDatafromLocalStorage);
     if (articleDatafromLocalStorage) {
       setAllArticles(articleDatafromLocalStorage);
     }
